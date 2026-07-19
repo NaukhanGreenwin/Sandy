@@ -99,7 +99,9 @@ a{color:inherit}
 }
 .site-head.scrolled{border-bottom-color:var(--line)}
 .nav{display:flex;align-items:center;gap:2rem;height:4.5rem}
-.brand{display:flex;flex-direction:column;line-height:1.15;text-decoration:none}
+.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.brand-pic{width:2.6rem;height:2.6rem;border-radius:50%;object-fit:cover;border:1px solid var(--line);box-shadow:0 1px 4px rgba(32,31,27,.14)}
+.brand-text{display:flex;flex-direction:column;line-height:1.15}
 .brand .name{font-family:var(--serif);font-weight:560;font-size:1.32rem;letter-spacing:-.01em}
 .brand .role{font-size:.62rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
 .nav-links{display:flex;gap:1.75rem;margin-left:auto;list-style:none}
@@ -302,8 +304,11 @@ textarea{resize:vertical;min-height:8.5rem}
 <header class="site-head" id="siteHead">
   <div class="wrap nav">
     <a class="brand" href="#top" aria-label="Sandy Bains, REALTOR — home">
-      <span class="name">Sandy Bains</span>
-      <span class="role">Realtor®</span>
+      <img class="brand-pic" src="sandybains/avatar.jpg" alt="" width="192" height="192">
+      <span class="brand-text">
+        <span class="name">Sandy Bains</span>
+        <span class="role">Realtor®</span>
+      </span>
     </a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
     <ul class="nav-links" id="navLinks">

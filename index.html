@@ -235,28 +235,14 @@ h2{font-size:clamp(1.9rem,3.6vw,2.7rem);max-width:24ch}
 .band p{color:#b3ae9f;max-width:46ch;margin-top:.9rem}
 
 /* ---------- contact ---------- */
-.contact-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(2.5rem,6vw,4.5rem);margin-top:3rem}
-.details{display:grid;gap:0;align-content:start}
+.contact-grid{margin-top:3rem}
+.details{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(2.5rem,6vw,5rem);align-content:start}
 .details .row{border-top:1px solid var(--line);padding:1.05rem 0;display:grid;grid-template-columns:7.2rem 1fr;gap:1rem;align-items:baseline}
-.details .row:last-child{border-bottom:1px solid var(--line)}
+.details .row:nth-last-child(-n+2){border-bottom:1px solid var(--line)}
 .details dt{font-size:.78rem;font-weight:640;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
 .details dd a{color:var(--ink);text-decoration:none}
 .details dd a:hover{text-decoration:underline;text-underline-offset:3px}
 .details dd .sub{display:block;font-size:.86rem;color:var(--ink-3)}
-form{display:grid;gap:1.1rem;grid-template-columns:1fr 1fr}
-.field{display:grid;gap:.4rem}
-.field.full{grid-column:1/-1}
-label{font-size:.88rem;font-weight:600}
-input,select,textarea{
-  font:inherit;font-size:.98rem;color:var(--ink);
-  background:var(--card);border:1px solid #d8d5c8;border-radius:.65rem;
-  padding:.72rem .9rem;width:100%;
-}
-input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
-textarea{resize:vertical;min-height:8.5rem}
-.form-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:1.2rem}
-.form-foot .hint{font-size:.88rem;color:var(--ink-3)}
-
 /* ---------- footer ---------- */
 .site-foot{background:var(--paper-2);border-top:1px solid var(--line);padding:3.5rem 0 2.5rem;margin-top:0}
 .foot-grid{display:grid;grid-template-columns:2fr 1fr 1.4fr;gap:2.5rem}
@@ -296,8 +282,10 @@ textarea{resize:vertical;min-height:8.5rem}
   .nav-cta{margin:0}
   .menu-btn{display:block}
   .why-grid,.svc-grid,.testi-grid,.steps,.comm-grid,.foot-grid{grid-template-columns:1fr}
-  form{grid-template-columns:1fr}
+  .details{grid-template-columns:1fr}
   .details .row{grid-template-columns:1fr;gap:.15rem}
+  .details .row:nth-last-child(-n+2){border-bottom:0}
+  .details .row:last-child{border-bottom:1px solid var(--line)}
 }
 </style>
 </head>
@@ -530,7 +518,7 @@ textarea{resize:vertical;min-height:8.5rem}
     <div class="wrap">
       <p class="eyebrow">Contact</p>
       <h2>Let's talk about your next move.</h2>
-      <p class="lede">Call, email, or send a note below — Sandy personally responds to every enquiry, usually the same day.</p>
+      <p class="lede">Call, text, or email — Sandy personally responds to every enquiry, usually the same day.</p>
       <div class="contact-grid">
         <dl class="details">
           <div class="row"><dt>Direct</dt><dd><a href="tel:+16476094999">647.609.4999</a></dd></div>
@@ -543,38 +531,6 @@ textarea{resize:vertical;min-height:8.5rem}
           </div>
           <div class="row"><dt>Web</dt><dd><a href="https://www.sandybains.ca">www.sandybains.ca</a></dd></div>
         </dl>
-        <form id="contactForm" novalidate>
-          <div class="field">
-            <label for="fName">Name</label>
-            <input id="fName" name="name" type="text" autocomplete="name" required>
-          </div>
-          <div class="field">
-            <label for="fPhone">Phone</label>
-            <input id="fPhone" name="phone" type="tel" autocomplete="tel">
-          </div>
-          <div class="field">
-            <label for="fEmail">Email</label>
-            <input id="fEmail" name="email" type="email" autocomplete="email" required>
-          </div>
-          <div class="field">
-            <label for="fInterest">I'm interested in</label>
-            <select id="fInterest" name="interest">
-              <option>Buying a home</option>
-              <option>Selling a home</option>
-              <option>A free home evaluation</option>
-              <option>Leasing or investing</option>
-              <option>Something else</option>
-            </select>
-          </div>
-          <div class="field full">
-            <label for="fMsg">Message</label>
-            <textarea id="fMsg" name="message" placeholder="Tell Sandy a little about what you're looking for…"></textarea>
-          </div>
-          <div class="form-foot">
-            <button class="btn btn-dark" type="submit">Send message</button>
-            <p class="hint">Prefer to talk? Call or text Sandy directly at <a href="tel:+16476094999">647.609.4999</a>.</p>
-          </div>
-        </form>
       </div>
     </div>
   </section>
@@ -634,28 +590,6 @@ textarea{resize:vertical;min-height:8.5rem}
   });
   links.addEventListener('click', function(e){
     if (e.target.tagName === 'A') { links.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
-  });
-
-  // "Request a home evaluation" pre-selects the matching enquiry type
-  document.getElementById('evalBtn').addEventListener('click', function(){
-    document.getElementById('fInterest').value = 'A free home evaluation';
-  });
-
-  // Contact form → opens the visitor's email client with a pre-filled message
-  document.getElementById('contactForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    var v = function(id){ return document.getElementById(id).value.trim(); };
-    var name = v('fName'), email = v('fEmail'), phone = v('fPhone'),
-        interest = v('fInterest'), msg = v('fMsg');
-    if (!name || !email) {
-      (name ? document.getElementById('fEmail') : document.getElementById('fName')).focus();
-      return;
-    }
-    var subject = 'Website enquiry — ' + interest;
-    var body = 'Hi Sandy,\n\n' + (msg || 'I would like to get in touch.') +
-      '\n\n—\n' + name + '\n' + email + (phone ? '\n' + phone : '');
-    window.location.href = 'mailto:sandybainsrealtor@gmail.com?subject=' +
-      encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
   });
 
   document.getElementById('year').textContent = new Date().getFullYear();

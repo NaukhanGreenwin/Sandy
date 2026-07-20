@@ -150,6 +150,8 @@ h2{font-size:clamp(1.9rem,3.6vw,2.7rem);max-width:24ch}
 /* ---------- hero ---------- */
 .hero{padding-top:clamp(8rem,16vw,11rem)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(2.5rem,6vw,5rem);align-items:center}
+.hero-photo{max-width:28rem;margin-inline:auto}
+.hero-photo img{border-radius:1.1rem;box-shadow:0 24px 48px -24px rgba(32,31,27,.45),0 4px 14px -6px rgba(32,31,27,.2)}
 .hero h1{font-size:clamp(2.5rem,5.2vw,3.9rem);max-width:15ch}
 .hero .lede{font-size:1.13rem;max-width:52ch}
 .hero-actions{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:2rem}
@@ -329,18 +331,9 @@ h2{font-size:clamp(1.9rem,3.6vw,2.7rem);max-width:24ch}
         </div>
         <p class="hero-note">HomeLife/Silvercity Realty Inc., Brokerage — independently owned &amp; operated.</p>
       </div>
-      <aside class="biz-card" aria-label="Contact card">
-        <div class="script">Sandy Bains</div>
-        <div class="cardrole">Realtor®</div>
-        <hr>
-        <dl>
-          <dt>Direct</dt><dd><a href="tel:+16476094999">647.609.4999</a></dd>
-          <dt>Office</dt><dd><a href="tel:+19059138500">905.913.8500</a></dd>
-          <dt>Email</dt><dd><a href="mailto:sandybainsrealtor@gmail.com">sandybainsrealtor@gmail.com</a></dd>
-          <dt>Web</dt><dd><a href="https://www.sandybains.ca">www.sandybains.ca</a></dd>
-        </dl>
-        <p class="broker"><strong>HomeLife/Silvercity Realty Inc., Brokerage</strong><br>11775 Bramalea Rd #201, Brampton, ON&nbsp;L6R&nbsp;3Z4</p>
-      </aside>
+      <figure class="hero-photo">
+        <img src="sandybains/portrait.jpg" alt="Sandy Bains, REALTOR®" width="832" height="1040">
+      </figure>
     </div>
   </section>
 
@@ -370,10 +363,18 @@ h2{font-size:clamp(1.9rem,3.6vw,2.7rem);max-width:24ch}
   <!-- ============ about ============ -->
   <section class="about" id="about">
     <div class="wrap about-grid">
-      <div class="portrait-frame rv">
-        <img src="sandybains/portrait.jpg" alt="Sandy Bains, REALTOR®" width="832" height="1040">
-        <p class="portrait-cap">Sandy Bains, REALTOR®<br>HomeLife/Silvercity Realty Inc., Brokerage — Brampton, Ontario</p>
-      </div>
+      <aside class="biz-card rv" aria-label="Contact card">
+        <div class="script">Sandy Bains</div>
+        <div class="cardrole">Realtor®</div>
+        <hr>
+        <dl>
+          <dt>Direct</dt><dd><a href="tel:+16476094999">647.609.4999</a></dd>
+          <dt>Office</dt><dd><a href="tel:+19059138500">905.913.8500</a></dd>
+          <dt>Email</dt><dd><a href="mailto:sandybainsrealtor@gmail.com">sandybainsrealtor@gmail.com</a></dd>
+          <dt>Web</dt><dd><a href="https://www.sandybains.ca">www.sandybains.ca</a></dd>
+        </dl>
+        <p class="broker"><strong>HomeLife/Silvercity Realty Inc., Brokerage</strong><br>11775 Bramalea Rd #201, Brampton, ON&nbsp;L6R&nbsp;3Z4</p>
+      </aside>
       <div class="rv">
         <p class="eyebrow">About</p>
         <h2>Meet Sandy.</h2>
